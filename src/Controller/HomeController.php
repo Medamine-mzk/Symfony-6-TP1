@@ -16,9 +16,14 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/taher', name: 'app_taher')]
-    public function index1(): Response
+    #[Route('/calc/{x}/{y}', name: 'app_calc')]
+    public function calc($x=1,$y=2): Response
     {
-        return $this->render('home/taher.html.twig');
+        $res=$x*$y;
+        return $this->render('home/calc.html.twig',[
+            'res'=>$res,
+            'x'=>$x,
+            'y'=>$y,
+        ]);
     }
 }
